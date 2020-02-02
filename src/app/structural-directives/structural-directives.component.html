@@ -1,0 +1,15 @@
+<!-- when name is equal to chandu then print you rocks else you dumb
+ -->
+
+<ng-container *ngIf="name == 'chands'; else yousucks">
+  <div>you rocks</div></ng-container
+>
+<!--  <div *ngIf="name!== 'chands'"> you sucks</div> -->
+<ng-template #yousucks>
+  <div>you sucks</div>
+</ng-template>
+
+<li *ngFor="let hero of heroes">
+  <img [src]="hero.img" height="100" width="100" *ngIf="hero.img" />
+  {{ hero.id }} {{ hero.name }}
+</li>

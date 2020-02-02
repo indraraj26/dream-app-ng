@@ -1,0 +1,45 @@
+<style>
+  .form-group {
+    padding: 10px;
+    margin: 5px;
+  }
+</style>
+<div>Reactive Form</div>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name" class="name">name </label>
+    <input type="text" name="name" id="name" formControlName="name" />
+    <p *ngIf="myForm.get('name').touched && myForm.get('name').invalid">
+      <span
+        *ngIf="myForm.get('name').hasError('required')"
+        style="
+                  display: inline-block;
+                  margin-left: 40px;
+                  font-style: italic;
+                  color: red;"
+        >Name is required</span
+      >
+    </p>
+  </div>
+  <div class="form-group">
+    <label for="age" class="age">Age </label>
+    <input type="number" name="age" id="age" formControlName="age" />
+    <div *ngIf="myForm.get('age').touched && myForm.get('age').invalid">
+      <span
+        *ngIf="myForm.get('age').hasError('required')"
+        style="
+              display: inline-block;
+              margin-left: 40px;
+              font-style: italic;
+              color: red;"
+        >Age is required</span
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="myForm.invalid">
+      Submit
+    </button>
+  </div>
+  <pre>{{ myForm.value | json }}</pre>
+</form>

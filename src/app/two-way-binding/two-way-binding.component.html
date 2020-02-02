@@ -1,0 +1,8 @@
+<input type="text" [(ngModel)]="name" />
+<p>{{ name }}</p>
+<div *ngIf="name == 'chands'">you rocks</div>
+<!-- <ng-template #abc>
+  <div>You sucks</div>
+</ng-template> -->
+
+<div *ngIf="name != '' && name != 'chands'">you sucks</div>

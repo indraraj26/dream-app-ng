@@ -1,0 +1,45 @@
+<style>
+  .form-group {
+    padding: 10px;
+    margin: 5px;
+  }
+</style>
+<div>Template driven Form</div>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="form-group">
+    <label for="name" class="name">name </label>
+    <input type="text" name="name" id="name" ngModel required #name="ngModel" />
+    <div *ngIf="name.touched && name.invalid">
+      <span
+        *ngIf="name.hasError('required')"
+        style="
+          display: inline-block;
+          margin-left: 40px;
+          font-style: italic;
+          color: red;"
+        >Name is required</span
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="age" class="age">Age </label>
+    <input type="number" name="age" id="age" ngModel #age="ngModel" required />
+    <div *ngIf="age.touched && age.invalid">
+      <span
+        *ngIf="age.hasError('required')"
+        style="
+            display: inline-block;
+            margin-left: 40px;
+            font-style: italic;
+            color: red;"
+        >Age is required</span
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="f.invalid">
+      Submit
+    </button>
+  </div>
+  <pre>{{ f?.value | json }}</pre>
+</form>
